@@ -8,7 +8,9 @@ static void Menu()
     Console.WriteLine("3. Editar Arquivo");
     Console.WriteLine("4. Salvar Arquivo");
     Console.WriteLine("0. Exit");
+    // Captura a opção do usuário
     short option = short.Parse(Console.ReadLine());
+    // Executa a ação com base na opção escolhida
     switch (option)
     {
         case 0: System.Environment.Exit(0); break;
@@ -23,6 +25,7 @@ static void Abrir()
     Console.Clear();
     Console.WriteLine("Qual o caminho do arquivo?");
     string path = Console.ReadLine();
+    // Lê o arquivo e exibe o conteúdo no console
     using (var file = new StreamReader(path))
     {
         string text = file.ReadToEnd();
@@ -55,12 +58,14 @@ static void Criar()
     Console.ReadLine();
     Menu();
 }
+// Editar arquivo
 static void Editar()
 {
     Console.Clear();
     Console.WriteLine("Digete seu texto abaixo (ESC para sair)");
     Console.WriteLine("----------------");
     string text = "";
+    // Captura o texto até que a tecla ESC seja pressionada
     do
     {
         text += Console.ReadLine();
@@ -78,6 +83,7 @@ static void Salvar(string text)
     Console.Clear();
     Console.WriteLine("Qual o caminho para salvar o arquivo?");
     var path = Console.ReadLine();
+    // Salva o texto no arquivo especificado
     using (var file = new StreamWriter(path))
     {
         file.Write(text);
